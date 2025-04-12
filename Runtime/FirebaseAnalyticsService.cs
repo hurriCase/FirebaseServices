@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Analytics.Runtime
 {
-    public class FirebaseAnalyticsService
+    public class FirebaseAnalyticsService : IAnalyticsService
     {
         private bool _isInitialized;
 
@@ -20,15 +20,16 @@ namespace Analytics.Runtime
                     if (dependencyStatus == DependencyStatus.Available)
                     {
                         _isInitialized = true;
-                        Debug.Log("Firebase Analytics initialized successfully");
+                        Debug.Log("[FirebaseAnalyticsService::Initialize] Firebase Analytics initialized successfully");
                     }
                     else
-                        Debug.LogError($"Could not resolve all Firebase dependencies: {dependencyStatus}");
+                        Debug.LogError("[FirebaseAnalyticsService::Initialize] " +
+                                       $"Could not resolve all Firebase dependencies: {dependencyStatus}");
                 });
             }
             catch (Exception e)
             {
-                Debug.LogError("[FirebaseAnalyticsService::InitializeFirebase] FireBase initialization failed with exception:" +
+                Debug.LogError("[FirebaseAnalyticsService::Initialize] FireBase initialization failed with exception:" +
                                $" {e.Message}");
             }
         }
@@ -37,11 +38,12 @@ namespace Analytics.Runtime
         {
             if (_isInitialized is false)
             {
-                Debug.LogWarning($"Firebase not initialized yet. Event {eventName} not sent.");
+                Debug.LogWarning("[FirebaseAnalyticsService::SendEvent] " +
+                                 $"Firebase not initialized yet. Event {eventName} not sent.");
                 return;
             }
 
-            Debug.Log($"Analytics Event: {eventName}");
+            Debug.Log($"[FirebaseAnalyticsService::SendEvent] Analytics Event: {eventName}");
             FirebaseAnalytics.LogEvent(eventName);
         }
 
@@ -49,11 +51,12 @@ namespace Analytics.Runtime
         {
             if (_isInitialized is false)
             {
-                Debug.LogWarning($"Firebase not initialized yet. Event {eventName} not sent.");
+                Debug.LogWarning($"[FirebaseAnalyticsService::SendEvent] " +
+                                 $"Firebase not initialized yet. Event {eventName} not sent.");
                 return;
             }
 
-            Debug.Log($"Analytics Event: {eventName} with parameters");
+            Debug.Log($"[FirebaseAnalyticsService::SendEvent] Analytics Event: {eventName} with parameters");
 
             var firebaseParams = new Parameter[parameters.Count];
             var index = 0;
