@@ -4,6 +4,8 @@ using Firebase;
 using Firebase.Analytics;
 using UnityEngine;
 
+// ReSharper disable UnusedType.Global
+// ReSharper disable UnusedMember.Local
 namespace Analytics.Runtime
 {
     public class FirebaseAnalyticsService : IAnalyticsService
@@ -51,7 +53,7 @@ namespace Analytics.Runtime
         {
             if (_isInitialized is false)
             {
-                Debug.LogWarning($"[FirebaseAnalyticsService::SendEvent] " +
+                Debug.LogWarning("[FirebaseAnalyticsService::SendEvent] " +
                                  $"Firebase not initialized yet. Event {eventName} not sent.");
                 return;
             }

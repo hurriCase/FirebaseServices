@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 
+// ReSharper disable UnusedMember.Global
+// ReSharper disable MemberCanBeInternal
 namespace Analytics.Runtime
 {
     public interface IAnalyticsService
