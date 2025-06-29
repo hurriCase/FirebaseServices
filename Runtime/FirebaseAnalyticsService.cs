@@ -1,18 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using Firebase;
 using Firebase.Analytics;
+using JetBrains.Annotations;
 using UnityEngine;
 
-// ReSharper disable UnusedType.Global
-// ReSharper disable UnusedMember.Local
 namespace Analytics.Runtime
 {
-    public class FirebaseAnalyticsService : IAnalyticsService
+    /// <summary>
+    /// Firebase implementation of the analytics service for tracking user events and behavior.
+    /// </summary>
+    [UsedImplicitly]
+    public sealed class FirebaseAnalyticsService : IAnalyticsService
     {
         private bool _isInitialized;
 
-        private async void Initialize()
+        /// <summary>
+        /// Initializes Firebase Analytics service asynchronously.
+        /// </summary>
+        /// <returns>A UniTask representing the asynchronous initialization operation.</returns>
+        [UsedImplicitly]
+        public async UniTask InitializeAsync()
         {
             try
             {
@@ -36,6 +45,11 @@ namespace Analytics.Runtime
             }
         }
 
+        /// <summary>
+        /// Sends an analytics event with the specified name.
+        /// </summary>
+        /// <param name="eventName">The name of the event to track.</param>
+        [UsedImplicitly]
         public void SendEvent(string eventName)
         {
             if (_isInitialized is false)
@@ -49,6 +63,12 @@ namespace Analytics.Runtime
             FirebaseAnalytics.LogEvent(eventName);
         }
 
+        /// <summary>
+        /// Sends an analytics event with the specified name and custom parameters.
+        /// </summary>
+        /// <param name="eventName">The name of the event to track.</param>
+        /// <param name="parameters">A dictionary containing custom parameters to include with the event.</param>
+        [UsedImplicitly]
         public void SendEvent(string eventName, Dictionary<string, string> parameters)
         {
             if (_isInitialized is false)
