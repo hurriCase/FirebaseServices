@@ -46,6 +46,10 @@ namespace FirebaseServices.Runtime.Config
             }
         }
 
-        public string GetString(string key) => _remoteConfig.GetValue(key).StringValue;
+        public bool TryGetString(string key, out string value)
+        {
+            value = _remoteConfig.GetValue(key).StringValue;
+            return value.IsValid();
+        }
     }
 }

@@ -19,11 +19,13 @@ namespace FirebaseServices.Runtime.Config
         UniTask InitAsync(CancellationToken token);
 
         /// <summary>
-        /// Gets a string value for the specified configuration key.
+        /// Attempts to retrieve a string value from the remote configuration.
         /// </summary>
         /// <param name="key">The configuration key to retrieve.</param>
-        /// <returns>The string value associated with the key, or default value if key not found.</returns>
+        /// <param name="value">When this method returns,
+        /// contains the string value if the key exists and has a valid value otherwise, null.</param>
+        /// <returns>True if the key exists and has a valid string value; otherwise, false.</returns>
         [UsedImplicitly]
-        string GetString(string key);
+        bool TryGetString(string key, out string value);
     }
 }
