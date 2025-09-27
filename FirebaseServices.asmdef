@@ -1,8 +1,9 @@
 {
-    "name": "Analytics",
-    "rootNamespace": "Analytics",
+    "name": "FirebaseServices",
+    "rootNamespace": "FirebaseServices",
     "references": [
-        "GUID:f51ebe6a0ceec4240a699833d6309b23"
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:e83d267d115097b489005b6b908a868a"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

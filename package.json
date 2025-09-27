@@ -1,9 +1,10 @@
 {
-  "name": "com.communitycenter.analytics",
+  "name": "com.communitycenter.firebaseservices",
   "version": "1.0.2",
-  "displayName": "Analytics",
+  "displayName": "FirebaseServices",
   "unity": "2022.1",
   "dependencies": {
-    "com.cysharp.unitask": "2.5.10"
+    "com.cysharp.unitask": "2.5.10",
+    "com.firsttry.customutils": "2.2.0"
   }
 }
