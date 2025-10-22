@@ -20,7 +20,7 @@ namespace FirebaseServices.Runtime.Base
         {
             try
             {
-                await FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
+                await FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(static task =>
                 {
                     var dependencyStatus = task.Result;
                     if (dependencyStatus == DependencyStatus.Available)
